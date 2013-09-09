@@ -1,4 +1,4 @@
-access.log-parser
+accesslog-parser
 =================
 
 Set of simple utilities created for reading and parsing **nginx** `access.log` file.
@@ -24,7 +24,7 @@ Example
     from parse import parse
     from reader import Read
 
-    r = (follow='/var/www/nginx/access.log')
+    r = Read(follow="/var/www/nginx/access.log")
 
     # read to the end of file
     #  'status_save=True' means it will remember position of last reading
@@ -32,6 +32,4 @@ Example
 
     # per line parsing
     parsed_data = []
-    [parsed_data.append(line) for line in lines]
-
-
+    [parsed_data.append(parse(line)) for line in lines]

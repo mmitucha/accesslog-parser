@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 
 import re
-import datetime
+import datetime, time
 
 # Inspired by article: http://www.seehuhn.de/blog/52
 
@@ -34,7 +34,7 @@ def clean_parsed_log(fn):
 
         # Convert date string to datetime object
         if "datetime" in result_dict:
-            tt = datetime.strptime(result_dict["datetime"][:-6], "%d/%b/%Y:%H:%M:%S")
+            tt = time.strptime(result_dict["datetime"][:-6], "%d/%b/%Y:%H:%M:%S")
             tt = list(tt[:6]) + [ 0, Timezone(result_dict["datetime"][-5:]) ]
             result_dict["datetime"] = datetime.datetime(*tt).isoformat()
 
